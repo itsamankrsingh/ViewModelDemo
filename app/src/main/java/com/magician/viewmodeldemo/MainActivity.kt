@@ -20,14 +20,9 @@ class MainActivity : AppCompatActivity() {
         viewModelFactory = MainViewModelFactory(0)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        viewModel.totalSum.observe(this, Observer {
-            binding.textView.text = it.toString()
-
-        })
+        binding.myViewModel = viewModel
+        binding.lifecycleOwner = this
 
 
-        binding.addButton.setOnClickListener {
-            viewModel.add(binding.editTextNum.text.toString().toInt())
-        }
     }
 }

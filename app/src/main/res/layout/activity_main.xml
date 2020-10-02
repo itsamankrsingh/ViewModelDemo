@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="myViewModel"
+            type="com.magician.viewmodeldemo.MainViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,13 +22,15 @@
             android:layout_margin="16dp"
             android:gravity="center"
             android:hint="@string/enter_num"
-            android:inputType="number" />
+            android:inputType="number"
+            android:text="@={myViewModel.inputText}" />
 
         <Button
             android:id="@+id/add_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:onClick="@{ () -> myViewModel.add()}"
             android:text="@string/add" />
 
         <TextView
@@ -31,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:gravity="center"
-            android:text="@string/_0"
+            android:text="@{String.valueOf(myViewModel.totalSum)}"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="32sp"
